@@ -42,8 +42,12 @@ function App() {
       }
       return task
     })
-
     setList(updatedList)
+  }
+
+  const addTask = (task) => {
+    const newList = [...list, task]
+    setList(newList)
   }
 
   return (
@@ -53,7 +57,7 @@ function App() {
           <h2 className="text-blue-800 font-bold text-lg">
             ToDo-ToDay: {dateToday()}
           </h2></div>
-        <AddTodoForm />
+        <AddTodoForm handleAdd={addTask} nextId={list.length} />
         <TodoList list={list} markDone={markDone} />
       </div>
     </div>
