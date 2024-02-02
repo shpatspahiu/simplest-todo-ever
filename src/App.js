@@ -1,6 +1,7 @@
 import { useState } from "react";
 import AddTodoForm from "./components/AddTodoForm";
 import TodoList from "./components/TodoList";
+import { v4 as uuidv4 } from 'uuid'
 import "./css/style.css"
 
 function App() {
@@ -46,7 +47,8 @@ function App() {
   }
 
   const addTask = (task) => {
-    const newList = [...list, task]
+    const taskWithId = { ...task, id: uuidv4() }
+    const newList = [...list, taskWithId]
     setList(newList)
   }
 

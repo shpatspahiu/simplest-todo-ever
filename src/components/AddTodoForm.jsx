@@ -3,7 +3,7 @@ import { useImmer } from 'use-immer'
 
 const AddTodoForm = ({ handleAdd, nextId }) => {
   const [item, setItem] = useImmer({
-    id: nextId,
+    id: '',
     task: '',
     isDone: false
   })
@@ -11,6 +11,14 @@ const AddTodoForm = ({ handleAdd, nextId }) => {
   const handleChange = e => {
     setItem(draft => {
       draft[e.target.name] = e.target.value
+    })
+  }
+
+  const resetInput = () => {
+    setItem({
+      id: '',
+      task: '',
+      isDone: false
     })
   }
 
@@ -28,6 +36,7 @@ const AddTodoForm = ({ handleAdd, nextId }) => {
         <div
           onClick={() => {
             handleAdd(item)
+            resetInput()
           }}
           className='
         add-btn
