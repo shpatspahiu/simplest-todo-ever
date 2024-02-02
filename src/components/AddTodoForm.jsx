@@ -35,8 +35,12 @@ const AddTodoForm = ({ handleAdd, nextId }) => {
         />
         <div
           onClick={() => {
-            handleAdd(item)
-            resetInput()
+            if (!item.task.trim()) {
+              alert('Must not be empty!')
+            } else {
+              handleAdd(item)
+              resetInput()
+            }
           }}
           className='
         add-btn

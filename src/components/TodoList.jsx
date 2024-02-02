@@ -1,7 +1,7 @@
 import React from 'react'
 import SingleTask from './SingleTask'
 
-const TodoList = ({ list, markDone }) => {
+const TodoList = ({ list, markDone, removeTask }) => {
   return (
     <div className='flex flex-col gap-1 bg-slate-300 px-4'>
       <ul>
@@ -13,6 +13,7 @@ const TodoList = ({ list, markDone }) => {
               task={item.task}
               key={item.id}
               markDone={markDone}
+              removeTask={removeTask}
             />
           )
         })}

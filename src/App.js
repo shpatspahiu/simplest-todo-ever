@@ -48,19 +48,25 @@ function App() {
 
   const addTask = (task) => {
     const taskWithId = { ...task, id: uuidv4() }
-    const newList = [...list, taskWithId]
-    setList(newList)
+    const updatedList = [...list, taskWithId]
+    setList(updatedList)
+  }
+
+  const removeTask = (id) => {
+    console.log(id)
+    const updatedList = list.filter((item) => item.id !== id)
+    setList(updatedList)
   }
 
   return (
-    <div className="py-4 items-center justify-center w-2/6 m-auto bg-red-100">
+    <div className="py-4 items-center justify-center w-3/6 m-auto bg-red-100">
       <div className="flex flex-col w-11/12 m-auto gap-4">
         <div>
           <h2 className="text-blue-800 font-bold text-lg">
             ToDo-ToDay: {dateToday()}
           </h2></div>
         <AddTodoForm handleAdd={addTask} nextId={list.length} />
-        <TodoList list={list} markDone={markDone} />
+        <TodoList list={list} markDone={markDone} removeTask={removeTask} />
       </div>
     </div>
   );
